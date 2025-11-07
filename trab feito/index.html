@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novembro Azul - Conscientização e Prevenção</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>">
+
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --cor-primaria: #004d99; /* Azul Escuro Principal */
+            --cor-secundaria: #007bff; /* Azul Vibrante para Destaque */
+            --cor-destaque: #00c0ff; /* Azul Claro para Detalhes/Hover */
+            --cor-fundo-claro: #f8f9fa; /* Fundo Leve */
+            --cor-fundo-escuro: #343a40; /* Fundo para Rodapé/Header */
+            --cor-texto-claro: #ffffff; /* Texto em fundos escuros */
+            --cor-texto-escuro: #212529; /* Texto em fundos claros */
+            --fonte-principal: 'Arial', sans-serif;
+            --fonte-titulo: 'Roboto', 'Helvetica', sans-serif;
+        }
+
+        /* Estilos Globais e Reset Básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--fonte-principal);
+            line-height: 1.6;
+            color: var(--cor-texto-escuro);
+            background-color: var(--cor-fundo-claro);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--cor-secundaria);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cor-destaque);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fonte-titulo);
+            margin-bottom: 0.5em;
+            color: var(--cor-primaria);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Cabeçalho */
+        .header {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--cor-texto-claro);
+        }
+
+        .logo span {
+            color: var(--cor-destaque);
+        }
+
+        /* Navegação Principal */
+        .nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav ul li {
+            margin-left: 20px;
+        }
+
+        .nav ul li a {
+            color: var(--cor-texto-claro);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--cor-destaque);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--cor-texto-claro);
+        }
+
+        /* Seção Hero/Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: var(--cor-texto-claro);
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+            color: var(--cor-texto-claro);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 1.5em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Botões CTA */
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primario {
+            background-color: var(--cor-destaque);
+            color: var(--cor-texto-escuro);
+        }
+
+        .btn-primario:hover {
+            background-color: var(--cor-texto-claro);
+            color: var(--cor-primaria);
+            border-color: var(--cor-primaria);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--cor-texto-claro);
+            border-color: var(--cor-texto-claro);
+            margin-left: 15px;
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--cor-texto-claro);
+            color: var(--cor-primaria);
+            border-color: var(--cor-texto-claro);
+        }
+
+        /* Seções de Conteúdo e Cartões */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--cor-destaque);
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px 0;
+        }
+
+        .card {
+            background-color: var(--cor-texto-claro);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--cor-secundaria);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--cor-secundaria);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        /* Seção de depoimentos/citações */
+        .depoimento {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .depoimento blockquote {
+            font-style: italic;
+            font-size: 1.3em;
+            max-width: 900px;
+            margin: 0 auto 15px;
+            line-height: 1.5;
+        }
+
+        .depoimento cite {
+            display: block;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--cor-destaque);
+        }
+        
+        /* Rodapé */
+        .footer {
+            background-color: var(--cor-fundo-escuro);
+            color: var(--cor-fundo-claro);
+            padding: 40px 0 20px;
+            border-top: 5px solid var(--cor-primaria);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            color: var(--cor-destaque);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--cor-texto-claro);
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5em;
+            color: var(--cor-destaque); /* Ícones sociais em azul claro */
+        }
+        .social-links a:hover {
+            color: var(--cor-texto-claro);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsividade (Mobile First) */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .btn-secundario {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-section {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">Novembro <span>Azul</span></div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#o-que-e">O Que É</a></li>
+                    <li><a href="#prevencao">Prevenção</a></li>
+                    <li><a href="#sintomas">Sintomas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">☰</div>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>O Cuidado É a Nossa Maior Força.</h1>
+            <p>Novembro Azul: Mês de conscientização sobre a importância do diagnóstico precoce do câncer de próstata e da saúde integral do homem.</p>
+            <div>
+                <a href="#prevencao" class="btn btn-primario">Saiba Como Prevenir</a>
+                <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-do-homem" target="_blank" class="btn btn-secundario">Orientações do Ministério da Saúde</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="o-que-e" class="content-section">
+        <div class="container">
+            <h2 class="section-title">O Que É o Novembro Azul</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">O Novembro Azul é um movimento mundial que ocorre durante o mês de novembro para reforçar a importância da prevenção e do diagnóstico precoce de doenças masculinas, com foco principal no câncer de próstata.</p>
+            
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Câncer de Próstata</h3>
+                    <p>É o segundo tipo de câncer mais comum entre os homens no Brasil. O diagnóstico precoce aumenta as chances de cura em 90%.</p>
+                </article>
+                <article class="card">
+                    <h3>Idade de Risco</h3>
+                    <p>Homens a partir dos 50 anos devem realizar o exame de rotina anualmente. Com histórico familiar, o acompanhamento deve começar aos 45 anos.</p>
+                </article>
+                <article class="card">
+                    <h3>Foco Principal</h3>
+                    <p>Combater o preconceito e a desinformação, incentivando os homens a procurarem atendimento médico e cuidarem da sua saúde.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoimento">
+        <div class="container">
+            <blockquote>"O maior ato de coragem que um homem pode ter é cuidar de si mesmo. Não espere os sintomas, faça a prevenção!"</blockquote>
+            <cite>Campanha Novembro Azul</cite>
+        </div>
+    </section>
+
+    <section id="prevencao" class="content-section" style="background-color: var(--cor-fundo-claro);">
+        <div class="container">
+            <h2 class="section-title">Prevenção e Exames</h2>
+            <div class="cards-grid">
+                <article class="card">
+                    <h3>Exame de PSA</h3>
+                    <p>Teste de sangue que mede o Antígeno Prostático Específico. Níveis elevados podem indicar alterações na próstata, incluindo câncer.</p>
+                </article>
+                <article class="card">
+                    <h3>Toque Retal</h3>
+                    <p>Exame clínico rápido que permite ao médico avaliar o tamanho e a textura da próstata, identificando nódulos suspeitos. É essencial.</p>
+                </article>
+                <article class="card">
+                    <h3>Estilo de Vida</h3>
+                    <p>Mantenha uma dieta saudável, pratique exercícios, evite o tabagismo e o excesso de álcool. Hábitos saudáveis reduzem o risco de câncer.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="sintomas" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Sinais de Alerta (Fase Avançada)</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Na fase inicial, o câncer de próstata pode não apresentar sintomas. Por isso, o exame de rotina é fundamental. Na fase avançada, os sintomas podem incluir:</p>
+            <ul style="max-width: 600px; margin: 0 auto; padding-left: 20px;">
+                <li style="margin-bottom: 10px;">Dificuldade e dor ao urinar.</li>
+                <li style="margin-bottom: 10px;">Diminuição do jato de urina.</li>
+                <li style="margin-bottom: 10px;">Necessidade de urinar com frequência, especialmente à noite.</li>
+                <li style="margin-bottom: 10px;">Presença de sangue na urina ou no sêmen.</li>
+                <li style="margin-bottom: 10px;">Dor óssea, especialmente na região pélvica ou lombar.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contato e Informações</h4>
+                    <p>Sua saúde é prioridade. Procure um urologista.</p>
+                    <p>Email: <a href="mailto:contato@novembroazul.org">contato@novembroazul.org</a></p>
+                    <p>Telefone: (00) 1234-5678</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="#inicio">Página Inicial</a>
+                    <a href="https://www.inca.gov.br/" target="_blank">INCA (Instituto Nacional de Câncer)</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">F</a> <a href="#" aria-label="Instagram">I</a> <a href="#" aria-label="Twitter">T</a> </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Novembro Azul - Conscientização pela Saúde do Homem.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
